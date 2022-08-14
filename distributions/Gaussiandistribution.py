@@ -15,7 +15,20 @@ class Gaussian(Distribution):
 
 	def calculate_stdev(self, sample=True):
 
-		pass
+		mean = self.caculate_mean()
+		sigma = 0 
+
+		if sample: 
+			n = len(self.data) -1
+		else:
+			n = len(self.data)
+
+		for number in self.data: 
+			sigma += (number - mean )**2
+
+		self.stdev = math.sqrt(sigma/n)
+
+		return self.stdev
 
 
 	def plot_histogram(self):
