@@ -41,7 +41,9 @@ class Gaussian(Distribution):
 
 	def pdf(self, x):
 
-		pass
+		part1 = 1/(self.stdev * math.sqrt(2*math.pi))
+		part2 = math.exp(-0.5*((x - self.mean) / self.stdev) ** 2)
+		return part1 * part2
 
 
 	def plot_histogram_pdf(self, n_spaces =50):
