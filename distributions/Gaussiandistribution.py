@@ -9,7 +9,8 @@ class Gaussian(Distribution):
 
 	def calculate_mean(self):
 
-		pass
+		self.mean = sum(self.data)/len(self.data)
+		return self.mean
 
 
 	def calculate_stdev(self, sample=True):
