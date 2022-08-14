@@ -33,7 +33,10 @@ class Gaussian(Distribution):
 
 	def plot_histogram(self):
 
-		pass
+		plt.hist(self.data)
+		plt.title("Histogram of Data")
+		plt.xlabel("data")
+		plt.ylabel("count")
 
 
 	def pdf(self, x):
