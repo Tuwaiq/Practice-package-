@@ -1,5 +1,6 @@
 import math
 import matplotlib.pyplot as plt
+from .Generaldistibution import Distribution 
 
 class Gaussian(Distribution):
 
@@ -29,6 +30,22 @@ class Gaussian(Distribution):
 		self.stdev = math.sqrt(sigma/n)
 
 		return self.stdev
+
+	def read_data_file(self, file_name, sample = True ):
+		with open(file_name) as file:
+			data_list = []
+			line = file.readline()
+			while line:
+				data_list.append(int(line))
+				line = file.readline()
+			file.close()
+
+			self.data = data_list
+			self.mean = self.calculate_mean
+			self.stdev = self.calculate_stdev(sample)
+
+
+
 
 
 	def plot_histogram(self):
@@ -82,12 +99,16 @@ class Gaussian(Distribution):
 
 	def __add__(self, other):
 
-		pass
+		result = Gaussian()
+		result.mean = self.mean + other.mean 
+		result.stdev = math.sqrt(self.stdev**2 + other.stdev**2)
+		return result
 
 
 	def __repr__(self):
 
-		pass
+		return "mean " + str(self.mean) +  ", standard deviation " + str(self.stdev)
+
 
 
 
